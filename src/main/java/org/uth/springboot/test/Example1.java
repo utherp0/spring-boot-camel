@@ -19,7 +19,7 @@ public class Example1 extends FatJarRouter
   @Override
   public void configure() throws Exception 
   {
-    from("netty-http:http://0.0.0.0:8080").setBody().simple("ref:buildResponse();
+    from("netty-http:http://0.0.0.0:8080").setBody().simple("ref:buildResponse");
   }
 
   @Bean
