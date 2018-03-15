@@ -1,44 +1,25 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!--
-
-     Copyright 2005-2016 Red Hat, Inc.
-
-     Red Hat licenses this file to you under the Apache License, version
-     2.0 (the "License"); you may not use this file except in compliance
-     with the License.  You may obtain a copy of the License at
-
-        http://www.apache.org/licenses/LICENSE-2.0
-
-     Unless required by applicable law or agreed to in writing, software
-     distributed under the License is distributed on an "AS IS" BASIS,
-     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or
-     implied.  See the License for the specific language governing
-     permissions and limitations under the License.
-
--->
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
   <modelVersion>4.0.0</modelVersion>
 
-  <groupId>io.fabric8.quickstarts</groupId>
-  <artifactId>spring-boot-camel</artifactId>
+  <groupId>org.example.fis</groupId>
+  <artifactId>fuse70-spring-boot</artifactId>
   <version>1.0-SNAPSHOT</version>
 
-  <name>Fabric8 :: Quickstarts :: Spring-Boot :: Camel</name>
-  <description>Spring Boot example running a Camel route</description>
+  <name>Fabric8 :: Quickstarts :: Spring-Boot :: Camel XML</name>
+  <description>Spring Boot example running a Camel route defined in XML</description>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
+    <!-- maven plugin versions -->
+    <fabric8.maven.plugin.version>3.5.32.fuse-000040-redhat-2</fabric8.maven.plugin.version>
+
     <!-- configure the versions you want to use here -->
-    <fabric8.version>2.3.6</fabric8.version>
+    <fabric8.version>2.3.7.fuse-000036-redhat-2</fabric8.version>
     <spring-boot.version>1.5.4.RELEASE</spring-boot.version>
 
-    <arquillian-cube.version>1.9.0</arquillian-cube.version>
-    <assertj.version>2.4.1</assertj.version>
-
-    <!-- maven plugin versions -->
-    <fabric8.maven.plugin.version>3.5.34</fabric8.maven.plugin.version>
     <maven-compiler-plugin.version>3.6.0</maven-compiler-plugin.version>
     <maven-surefire-plugin.version>2.19.1</maven-surefire-plugin.version>
   </properties>
@@ -52,38 +33,21 @@
         <type>pom</type>
         <scope>import</scope>
       </dependency>
-
-      <!-- The following dependencies can be removed whe using fabric8 BOM 2.3.7+ -->
-      <dependency>
-        <groupId>org.arquillian.cube</groupId>
-        <artifactId>arquillian-cube-bom</artifactId>
-        <version>${arquillian-cube.version}</version>
-        <scope>import</scope>
-        <type>pom</type>
-      </dependency>
-      <dependency>
-        <groupId>org.assertj</groupId>
-        <artifactId>assertj-core</artifactId>
-        <version>${assertj.version}</version>
-      </dependency>
     </dependencies>
   </dependencyManagement>
 
   <dependencies>
-
-    <!-- Enabling health checks -->
     <dependency>
-      <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-starter-actuator</artifactId>
+      <groupId>org.apache.camel</groupId>
+      <artifactId>camel-spring-boot-starter</artifactId>
     </dependency>
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-web</artifactId>
     </dependency>
-
     <dependency>
-      <groupId>org.apache.camel</groupId>
-      <artifactId>camel-spring-boot-starter</artifactId>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-actuator</artifactId>
     </dependency>
 
     <!-- testing -->
@@ -107,13 +71,13 @@
       <artifactId>kubernetes-assertions</artifactId>
       <scope>test</scope>
     </dependency>
-
   </dependencies>
 
   <build>
     <defaultGoal>spring-boot:run</defaultGoal>
 
     <plugins>
+
       <plugin>
         <artifactId>maven-compiler-plugin</artifactId>
         <version>${maven-compiler-plugin.version}</version>
@@ -122,6 +86,7 @@
           <target>1.8</target>
         </configuration>
       </plugin>
+
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-surefire-plugin</artifactId>
@@ -161,6 +126,8 @@
           </execution>
         </executions>
       </plugin>
+
     </plugins>
+
   </build>
 </project>
